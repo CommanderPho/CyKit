@@ -87,7 +87,6 @@ Documentation
 
 <br><br>
 
-
 (C:\Users\pho\Anaconda2\envs\nintendoSwitch) C:\Users\pho>conda list -n CyKit-AnacondaPython36
 # packages in environment at C:\Users\pho\Anaconda2\envs\CyKit-AnacondaPython36:
 #
@@ -106,3 +105,30 @@ vs2015_runtime            14.0.25420                    0
 wheel                     0.29.0                   py36_0
 wincertstore              0.2                      py36_0
 wrapt                     1.10.11                  py36_0
+
+
+(NeuroPy) C:\Users\pho\repos\EmotivEpoc\CyKit\Py3>python CyKIT.py 127.0.0.1 5555 2
+> USB Device (No Additional Information)
+> USB Device (No Additional Information)
+> USB Device (No Additional Information)
+> USB Device (No Additional Information)
+
+> Found EEG Device [Emotiv RAW DATA] 
+
+> USB Device (No Additional Information)
+> USB Device (No Additional Information)
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+
+> Listening on 127.0.0.1 : 5555
+> Trying Key Model #: 2
+(-) Connecting . . .
+(+) Connected.
+
+KeyError: Exception in line: 185, message: 'Sec-WebSocket-Key'
+Traceback (most recent call last):
+  File "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyWebSocket.py", line 185, in run
+    secKey = header['Sec-WebSocket-Key']
+KeyError: 'Sec-WebSocket-Key'
+
+127.0.0.1:5555
