@@ -5,7 +5,8 @@
 
 @REM Apogee 2023-02-16
 cd C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\
-C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2 info+outputdata
+C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2
+@REM info+generic+outputdata
 @REM 2 stands for consumer model
 @REM pywinusb
 
