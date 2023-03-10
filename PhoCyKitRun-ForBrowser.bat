@@ -10,7 +10,7 @@ C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\Emoti
 @REM 2 stands for consumer model
 @REM pywinusb
 
-@REM 127.0.0.1:54123
-@REM python.exe .\CyKIT.py 127.0.0.1 54123 6 outputdata+noweb
+@REM 127.0.0.1:5555
+@REM python.exe .\CyKIT.py 127.0.0.1 5555 6 outputdata+noweb
 
 PAUSE

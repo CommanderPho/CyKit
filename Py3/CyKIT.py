@@ -87,13 +87,13 @@ if arg_count == 1 or arg_count > 5 or sys.argv[1] == "help" or sys.argv[1] == "-
     mirror("  Example Usage: \r\n")
     mirror("  Python.exe .\\CyKIT.py 127.0.0.1 5555 6 openvibe+generic+nocounter+noheader+nobattery+ovdelay:100+integer+ovsamples:004 \r\n\r\n")
     mirror(" " + "═" * 100 + "\r\n")
-    sys.argv = [sys.argv[0], "127.0.0.1", "54123", "1", ""]
+    sys.argv = [sys.argv[0], "127.0.0.1", "5555", "1", ""]
     
     
 if arg_count < 5:
     
     if arg_count == 2:
-        sys.argv = [sys.argv[0], sys.argv[1], "54123", "1", ""]
+        sys.argv = [sys.argv[0], sys.argv[1], "5555", "1", ""]
     if arg_count == 3:
         sys.argv = [sys.argv[0], sys.argv[1], sys.argv[2], "1", ""]
     if arg_count == 4:
