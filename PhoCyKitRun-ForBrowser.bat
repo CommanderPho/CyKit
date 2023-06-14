@@ -10,6 +10,8 @@ C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\Emoti
 @REM 2 stands for consumer model
 @REM pywinusb
 
+@REM outputdata - Seems to dump the raw output data to the CMD console. 
+
 @REM 127.0.0.1:5555
 @REM python.exe .\CyKIT.py 127.0.0.1 5555 6 outputdata+noweb
 
