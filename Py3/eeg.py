@@ -1065,7 +1065,8 @@ class EEG(object):
                                         detail_report = self.device.find_input_reports()
                                         detail_info   = detail_report[0].get()
                                         mirror.text(str(detail_info))
-                                        device_firmware = "0x" + str(hex(detail_info[3]))[2:] +  str(hex(detail_info[4])[2:])
+                                        device_firmware   = "0x" + str(hex(detail_info[3]))[2:] + str(hex(detail_info[4])[2:])
+                                        software_firmware = "0x" + str(hex(detail_info[5]))[2:] + str(hex(detail_info[6])[2:])
                                     if eval(self.cyIO.getInfo("verbose")) == True:
                                         mirror.text(" USB Dongle Firmware = " + device_firmware)
                                         
@@ -1337,10 +1338,18 @@ class EEG(object):
             if eval(cyIO.getInfo("status")) == True and eval(cyIO.getInfo("noweb")) == False:
                 cyIO.sendInfo("device")
                 cyIO.sendInfo("serial")
-                cyIO.sendInfo("keymodel")
+
+                firmware = cyIO.getInfo("softFirmware") # Auto-Detect firmware for EPOC+
+                if "0x6" in firmware:
+                    cyIO.sendData(1,"CyKITv2:::Info:::keymodel:::6")
+                else:
+                    cyIO.sendInfo("keymodel")
+
                 cyIO.sendInfo("config")
                 cyIO.sendInfo("datamode")
                 cyIO.sendData(1,"CyKITv2:::Info:::delimiter:::" + str(ord(cyIO.getInfo("delimiter"))))
+                
+                    
                 
         self.generic = cyIO.getInfo("generic")
 
@@ -1567,7 +1576,7 @@ class EEG(object):
                         else:
                             counter_data = str(data[0]) + self.delimiter
                         
-                        # ~Format-0: (Default) 
+                        # +Format-0: (Default) 
                         # ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                         if self.format < 1:
                             for i in range(0,14):
@@ -1579,7 +1588,7 @@ class EEG(object):
                                 mirror.text(str(counter_data + packet_data))
                         
                         
-                        # ~Format-1: Raw Data (Data Not Decoded)
+                        # +Format-1: Raw Data (Data Not Decoded)
                         # ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                         if self.format == 1:
                             for i in range(1, len(data)):
@@ -1589,6 +1598,49 @@ class EEG(object):
                                 cyIO.startRecord(counter_data + packet_data)
                             if self.outputdata == True:
                                 mirror.text(str(counter_data + packet_data))
+                    
+                        # +Format-3: Decode for 2015 EPOC+ firmware.  [Not complete for gyro format]
+                        # ----------------------------------------------------------------------------
+                        if self.format == 3:
+                            
+                            if self.nocounter == True:
+                                counter_data = ""
+                            else:
+                                counter_data = str(data[0]) + self.delimiter + "16" + self.delimiter
+                                
+                            z = ''
+                            for i in range(1, len(data)):
+                                z = z + format(data[i],'08b')
+                                
+                            for i in range(2, len(self.insight_1),2):
+                                i_1 = self.insight_1[(i-2)]
+                                i_2 = self.insight_1[(i-1)]
+                            
+                                if i_2 > len(z):
+                                    i = len(self.insight_1)
+                                    continue
+
+                                v_1 = '0b' + z[(i_1):(i_2)]
+                                v_2 = '0b' + z[(i_2):(i_2+6)]
+
+                                if i == 16 or i == 18:
+                                    data_line = str(int(eval(v_1))) + self.delimiter + str(int(eval(v_2)))
+                                    continue
+
+                                packet_data = packet_data + self.convertEPOC_PLUS(str(int(eval(v_2))), str(int(eval(v_1)))) + self.delimiter
+                            
+                            if self.nobattery == False:
+                                packet_data += data_line                          # Append data lines for battery and quality.
+                            else:
+                                packet_data = packet_data[:-len(self.delimiter)]  # Remove extra delimiter.
+                            
+                            if self.outputdata == True:
+                                print(counter_data + packet_data)
+
+                            if cyIO.isRecording() == True:
+                                cyIO.startRecord(counter_data + packet_data)
+
+
                     
                     #eval('0xaf0faf') >> (14*1+1) & 0b1111111
                     #  Insight.
