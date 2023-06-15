@@ -1,0 +1,182 @@
+
+C:\Users\pho\repos\EmotivEpoc\CyKit>cd C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\
+
+C:\Users\pho\repos\EmotivEpoc\CyKit\Py3>C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 +verbose
+> Importing (pyusb) \cyPyUSB
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: Emotiv
+  Device: EEG Signals
+  Vendor: 0x1234
+ Product: 0xed02
+
+> Found EEG Device [EEG Signals]
+
+[160, 0, 6, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ Device Firmware = 0x6ff
+ Software Firmware = 0x00
+> Using Device: EEG Signals
+
+ ░░ Serial Number: UD201502090001F6 ░░
+
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8087
+ Product: 0x26
+══════════════════════════════════════════════════
+ Company: AsusTek Computer Inc.
+  Device: AURA LED Controller
+  Vendor: 0xb05
+ Product: 0x19af
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8086
+ Product: 0x7ae0
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════════════════════════════════════════════
+   AES Key = [54, 70, 70, 49, 49, 49, 70, 48, 54, 48, 70, 70, 48, 48, 70, 54]
+    Format = 0
+ Delimiter = ,
+══════════════════════════════════════════════════════════════════════════════════════════
+
+ Config Options = {
+
+   blankdata            False
+   blankcsv             False
+   nocounter            False
+   nobattery            False
+   baseline             False
+   noheader             False
+   integer              False
+   outputdata           False
+   generic              False
+   openvibe             False
+   baseline             False
+   outputraw            False
+   filter               False
+   allmode              False
+   eegmode              False
+   gyromode             False
+   verbose               True  *
+   noweb                False
+
+ }
+══════════════════════════════════════════════════
+
+> Listening on 127.0.0.1 : 5555
+> Trying Key Model #: 6
+(-) Connecting . . .
+(+) Connected.
+
+
+Active Threads = {
+   ['MainThread', 'ioThread', 'eegThread']
+}
+
+ Cipher Key = [54, 70, 70, 49, 49, 49, 70, 48, 54, 48, 70, 70, 48, 48, 70, 54]
+CLIENT >>> CyKITv2.setDataMode.1
+>>> Client Setting >>> DataMode = 1
+CLIENT >>> CyKITv2.setBaselineMode.0
+
+ ░░░ Device Interference or Turned Off ░░░ 
+
+*** Connection Closing. (Location: dataLoss)
+* Closing from location: CyKIT.main() 1
+*** Connection Closing. (Location: CyWebSocket)
+*** Reseting . . .
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: Emotiv
+  Device: EEG Signals
+  Vendor: 0x1234
+ Product: 0xed02
+
+> Found EEG Device [EEG Signals]
+
+[160, 0, 6, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ Device Firmware = 0x6ff
+ Software Firmware = 0x00
+> Using Device: EEG Signals
+
+ ░░ Serial Number: UD201502090001F6 ░░
+
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8087
+ Product: 0x26
+══════════════════════════════════════════════════
+ Company: AsusTek Computer Inc.
+  Device: AURA LED Controller
+  Vendor: 0xb05
+ Product: 0x19af
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8086
+ Product: 0x7ae0
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════════════════════════════════════════════
+   AES Key = [54, 70, 70, 49, 49, 49, 70, 48, 54, 48, 70, 70, 48, 48, 70, 54]
+    Format = 0
+ Delimiter = ,
+══════════════════════════════════════════════════════════════════════════════════════════
+
+ Config Options = {
+
+   blankdata            False
+   blankcsv             False
+   nocounter            False
+   nobattery            False
+   baseline             False
+   noheader             False
+   integer              False
+   outputdata           False
+   generic              False
+   openvibe             False
+   baseline             False
+   outputraw            False
+   filter               False
+   allmode              False
+   eegmode              False
+   gyromode             False
+   verbose               True  *
+   noweb                False
+
+ }
+══════════════════════════════════════════════════
+
+> Listening on 127.0.0.1 : 5555
+> Trying Key Model #: 6
+(-) Connecting . . .
+(+) Connected.
+
+
+Active Threads = {
+   ['MainThread', 'ioThread', 'eegThread']
+}
+
+ Cipher Key = [54, 70, 70, 49, 49, 49, 70, 48, 54, 48, 70, 70, 48, 48, 70, 54]
+CLIENT >>> CyKITv2.setDataMode.1
+>>> Client Setting >>> DataMode = 1
+CLIENT >>> CyKITv2.setBaselineMode.0
+CLIENT >>> CyKITv2.setBaselineMode.0
+CLIENT >>> CyKITv2.setBaselineMode.0
