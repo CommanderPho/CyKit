@@ -17,6 +17,8 @@ cd C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\
 @REM C:\Users\pho\repos\EmotivEpoc\CyKit\Py3>pyenv which python
 @REM 	C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe
 
-C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2 openvibe+generic+nocounter+noheader+nobattery+integer+ovsamples:004
+@REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2 openvibe+generic+nocounter+noheader+nobattery+integer+ovsamples:004
+@REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 openvibe+generic+nocounter+noheader+nobattery+integer+ovsamples:004
+C:\Users\pho\AppData\Local\pypoetry\Cache\virtualenvs\cykit-NgMVXrH4-py3.7\Scripts\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 openvibe+generic+nocounter+noheader+nobattery+integer+ovsamples:004
 
 PAUSE
