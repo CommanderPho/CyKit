@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "cykit"
+version = "0.1.0"
+description = ""
+authors = ["Pho Hale <PhoHale@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.7.9"
+Cython = "^0.29.35"
+setuptools = "^68.0.0"
+wheel = "^0.40.0"
+libusb = "^1.0.26b5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
