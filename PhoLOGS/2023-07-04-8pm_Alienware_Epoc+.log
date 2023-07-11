@@ -1,0 +1,106 @@
+(CyKit-AnacondaPython36) C:\Users\pho\repos\CyKit\Py3>python CyKIT.py 127.0.0.1 5555 6 +verbose
+> Importing (pyusb) \cyPyUSB
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8087
+ Product: 0x8008
+══════════════════════════════════════════════════
+ Company: Alienware
+  Device: AW1517
+  Vendor: 0x187c
+ Product: 0x528
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8087
+ Product: 0x8000
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8086
+ Product: 0x8c31
+══════════════════════════════════════════════════
+ Company: Emotiv
+  Device: EPOC+
+  Vendor: 0x1234
+ Product: 0xed02
+
+> Found EEG Device [EPOC+]
+
+[0, 0, 5, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ Device Firmware = 0x565
+ Software Firmware = 0x00
+> Using Device: EPOC+
+
+ ░░ Serial Number: EP201502230002B7 ░░
+
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0xcf3
+ Product: 0xe300
+══════════════════════════════════════════════════
+> USB Device (No Additional Information)
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8086
+ Product: 0x8c26
+══════════════════════════════════════════════════
+ Company: None
+  Device: None
+  Vendor: 0x8086
+ Product: 0x8c2d
+Hardware Information indicates your firmware might not be supported for mode changes via CyKIT
+   Please Report your firmware and software to the software developer:
+   Device   Firmware: 0x565
+   Software Firmware: 0x00
+
+ Until it is concluded to be safe to update via CyKIT,
+  it is recommended you use an Emotiv program to make mode changes.
+
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  *** Important Advisories *** (Please Read)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+      The EPOC+ is connected directly to your computer via USB.
+      During this time, the device can not send data via Bluetooth or USB.
+
+
+      To Change the EPOC+ mode, the device must be [Powered On] (ie. White light on)  while connected to USB.
+      If the device is not turned on when a selection is made, no settings will be changed.
+
+
+      Changing to 256hz and or enabling MEMS (ie. gyro) data, will reduce the battery life.
+      EPOC+ (Typical) Battery Life = 12 Hours.
+
+
+      EPOC+ (14-bit mode) - key model# = 4
+      EPOC+ (16-bit mode) - key model# = 6
+
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  EPOC+ Mode Selection Menu. [Current Mode: unknown]
+════════════════════════════════════════════════════════════════════════════════════════════════════
+ 0) EPOC (14-bit mode)
+ 1) EPOC+ 128hz 16bit - MEMS off
+ 2) EPOC+ 128hz 16bit - MEMS 32hz  16bit
+ 3) EPOC+ 128hz 16bit - MEMS 64hz  16bit
+ 4) EPOC+ 128hz 16bit - MEMS 128hz 16bit
+ 5) EPOC+ 256hz 16bit - MEMS off
+ 6) EPOC+ 256hz 16bit - MEMS 32hz  16bit
+ 7) EPOC+ 256hz 16bit - MEMS 64hz  16bit
+ 8) EPOC+ 256hz 16bit - MEMS 128hz 16bit
+
+ Enter Mode: [0,1,2,3,4,5,6,7,8] or [Q] to Exit \>
+
+
+
+
+
+
+
+
+
+
