@@ -1,15 +1,13 @@
 @REM @REM Alienbook Pre 2023-02-16
-CALL C:\Users\pho\Anaconda2\Scripts\activate.bat C:\Users\pho\Anaconda2\envs\CyKit-AnacondaPython36
-cd C:\Users\pho\bin\CyKit-master\Py3\
+@REM CALL C:\Users\pho\Anaconda2\Scripts\activate.bat C:\Users\pho\Anaconda2\envs\CyKit-AnacondaPython36
+@REM cd C:\Users\pho\bin\CyKit-master\Py3\
 @REM Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 2
-Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 6
-
 
 @REM Apogee 2023-02-16
-@REM cd C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\
+cd C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\
 @REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2
-@REM WORKING NOW 2023-07-11 - turned off Smart Plug
-C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+@REM WORKING NOW 2023-07-11 - turned of Smart Plug
+C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2 info+verbose
 
 @REM I'm confused because I thought it was supposed to be 6 for the Epoc+
 @REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2 info+pywinusb+verbose
