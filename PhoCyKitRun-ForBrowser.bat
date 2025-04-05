@@ -37,4 +37,7 @@ C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\Emoti
 @REM python.exe .\CyKIT.py 127.0.0.1 5555 6 outputdata+noweb
 
 
+@REM 2025-03-19 - Apogee New
+
+C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2
 PAUSE
