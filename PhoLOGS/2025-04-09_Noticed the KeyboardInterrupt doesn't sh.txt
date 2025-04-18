@@ -1,0 +1,1 @@
+Noticed the KeyboardInterrupt doesn't show up until the user tries to click "Connect" or "Disconnect" in the web browser, suggesting it's that part that it's hanging on?
