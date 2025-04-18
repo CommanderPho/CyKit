@@ -42,6 +42,13 @@
 @REM PAUSE
 
 @REM 2025-04-09 - Apogee Continued
-cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
-C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+eegmode+outputraw+nobattery+noheader+nocounter
+@REM cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
+@REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+eegmode+outputraw+nobattery+noheader+nocounter
+@REM noweb
+
+@REM 2025-04-17 - EmotivWindows (VirtualBox VM)
+C:\Users\pho\repos\CyKit\.venv\Scripts\activate @REM .bat
+cd "C:\Users\pho\repos\CyKit\Py3"
+python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+
 @REM noweb
