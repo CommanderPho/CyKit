@@ -47,8 +47,8 @@
 @REM noweb
 
 @REM 2025-04-17 - EmotivWindows (VirtualBox VM)
-C:\Users\pho\repos\CyKit\.venv\Scripts\activate
+C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
 cd "C:\Users\pho\repos\CyKit\Py3"
-python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 noweb+outputraw
 @REM noweb
