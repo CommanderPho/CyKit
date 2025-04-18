@@ -132,3 +132,9 @@ Traceback (most recent call last):
 KeyError: 'Sec-WebSocket-Key'
 
 127.0.0.1:5555
+
+
+## 2025-04-14 - Alienbook Export
+
+pip freeze > requirements.txt
+
