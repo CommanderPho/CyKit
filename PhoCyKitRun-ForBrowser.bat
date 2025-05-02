@@ -57,9 +57,18 @@
 
 @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
 micromamba activate cykit
+
+
+@REM %windir%\system32\cmd.exe "/K" C:\Users\pho\micromamba\condabin\activate.bat C:\ProgramData\mambaforge-pypy3\
+
+%windir%\system32\cmd.exe "/K" C:\Users\pho\micromamba\Scripts\activate.bat C:\Users\pho\micromamba\envs\cykit\
+
+
+
 cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
 @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 noweb+outputraw
+python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 
+@REM noweb+outputraw
 
 
-C:\Users\pho\repos\EmotivEpoc\CyKit\Py3
+@REM C:\Users\pho\repos\EmotivEpoc\CyKit\Py3
