@@ -220,3 +220,9 @@ micromamba create -f .\cykit_environment_minimal.yml
 micromamba activate cykit
 ```
 
+
+
+## 2025-04-14 - Alienbook Export
+
+pip freeze > requirements.txt
+
