@@ -245,12 +245,19 @@ def main(CyINIT):
                 CyINIT = 1
                 main(1)
 
+
+
+
 try:
     try:
         main(1)
     except OSError as exp:
         main(1)
-
+    except KeyboardInterrupt:
+        mirror("\r\n> Program terminated by user. Cleaning up...")
+        # Optional: Add any cleanup code here if needed
+        # For example, closing any open connections or files
+        os._exit(0)  # Exit cleanly
 except Exception as e:
     exc_type, ex, tb = sys.exc_info()
     imported_tb_info = traceback.extract_tb(tb)[-1]
