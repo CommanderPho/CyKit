@@ -1,0 +1,15 @@
+name: cykit
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - certifi
+  - setuptools
+  - six=1.10
+  - vc=14
+  - vs2015_runtime=14.0
+  - pip
+  - wheel
+  - wincertstore
+  - wrapt
