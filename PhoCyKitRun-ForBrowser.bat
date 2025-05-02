@@ -41,7 +41,24 @@ Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 6
 @REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 2
 @REM PAUSE
 
-@REM @REM 2025-04-09 - Apogee Continued
+@REM 2025-04-09 - Apogee Continued
 @REM cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
 @REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+eegmode+outputraw+nobattery+noheader+nocounter
-@REM @REM noweb
+@REM noweb
+
+@REM 2025-04-17 - EmotivWindows (VirtualBox VM)
+CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
+cd "C:\Users\pho\repos\CyKit\Py3"
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
+@REM noweb+outputraw
+
+@REM @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
+@REM micromamba activate cykit
+@REM @REM %windir%\system32\cmd.exe "/K" C:\Users\pho\micromamba\condabin\activate.bat C:\ProgramData\mambaforge-pypy3\
+@REM %windir%\system32\cmd.exe "/K" C:\Users\pho\micromamba\Scripts\activate.bat C:\Users\pho\micromamba\envs\cykit\
+@REM cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
+@REM @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+@REM python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 
+@REM @REM noweb+outputraw
+@REM @REM C:\Users\pho\repos\EmotivEpoc\CyKit\Py3

@@ -134,6 +134,94 @@ KeyError: 'Sec-WebSocket-Key'
 127.0.0.1:5555
 
 
+## 2025-05-01 - Micromamba Apogee Setup Attempt
+
+
+Added `MAMBA_ROOT_PREFIX` using Rapid Environment Editor for both User Variables and System Variables
+
+
+```ps1
+cd ~/Downloads
+Invoke-Webrequest -URI https://micro.mamba.pm/api/micromamba/win-64/latest -OutFile micromamba.tar.bz2
+tar xf micromamba.tar.bz2
+
+MOVE -Force Library\bin\micromamba.exe micromamba.exe
+.\micromamba.exe --help
+
+# You can use e.g. $HOME\micromambaenv as your base prefix
+$Env:MAMBA_ROOT_PREFIX="K:\FastSwap\Environments\micromamba"
+
+# Invoke the hook
+.\micromamba.exe shell hook -s powershell | Out-String | Invoke-Expression
+
+# ... or initialize the shell
+.\micromamba.exe shell init -s powershell -r K:\FastSwap\Environments\micromamba
+# and use micromamba directly
+micromamba create -f ./test/env_win.yaml -y
+micromamba activate yourenv
+
+```
+
+
+## Produces
+
+```
+
+PS C:\Users\pho> cd .\bin\
+PS C:\Users\pho\bin> .\micromamba.exe shell init -s powershell -r K:\FastSwap\Environments\micromamba
+Init powershell profile at 'C:\Users\pho\Documents\WindowsPowerShell\profile.ps1'
+The following has been added in your "C:\\Users\\pho\\Documents\\WindowsPowerShell\\profile.ps1" file
+
+#region mamba initialize
+# !! Contents within this block are managed by 'mamba shell init' !!
+$Env:MAMBA_ROOT_PREFIX = "K:\FastSwap\Environments\micromamba"
+$Env:MAMBA_EXE = "C:\Users\pho\bin\micromamba.exe"
+(& $Env:MAMBA_EXE 'shell' 'hook' -s 'powershell' -r $Env:MAMBA_ROOT_PREFIX) | Out-String | Invoke-Expression
+#endregion
+
+Init pwsh profile at 'C:\Users\pho\Documents\PowerShell\profile.ps1'
+The following has been added in your "C:\\Users\\pho\\Documents\\PowerShell\\profile.ps1" file
+
+#region mamba initialize
+# !! Contents within this block are managed by 'mamba shell init' !!
+$Env:MAMBA_ROOT_PREFIX = "K:\FastSwap\Environments\micromamba"
+$Env:MAMBA_EXE = "C:\Users\pho\bin\micromamba.exe"
+(& $Env:MAMBA_EXE 'shell' 'hook' -s 'powershell' -r $Env:MAMBA_ROOT_PREFIX) | Out-String | Invoke-Expression
+#endregion
+
+
+```
+
+## Extras
+
+```ps1
+
+cd "C:\Users\pho\repos\EmotivEpoc\CyKit\EXTERNAL\Environments\ALIENBOOK"
+
+
+micromamba config set ssl_verify false
+micromamba create -f cykit_environment.yml
+
+micromamba create -p K:\FastSwap\Environments\micromamba\envs\cykit python=3.6
+
+$Env:MAMBA_ROOT_PREFIX="C:\Users\pho\micromamba"
+micromamba create -p C:\Users\pho\micromamba\envs\cykit python=3.
+
+
+```
+
+# Use with working `$Env:MAMBA_ROOT_PREFIX="C:\Users\pho\micromamba"`
+
+Note: Using the external SSD (I think it's ExFAT formatted) did not work, failing at the linking steps. Had to use the C:/ drive
+ 
+```ps1
+$Env:MAMBA_ROOT_PREFIX="C:\Users\pho\micromamba"
+micromamba create -f .\cykit_environment_minimal.yml
+micromamba activate cykit
+```
+
+
+
 ## 2025-04-14 - Alienbook Export
 
 pip freeze > requirements.txt
