@@ -1,8 +1,8 @@
-@REM @REM Alienbook Pre 2023-02-16
-CALL C:\Users\pho\Anaconda2\Scripts\activate.bat C:\Users\pho\Anaconda2\envs\CyKit-AnacondaPython36
-cd C:\Users\pho\bin\CyKit-master\Py3\
-@REM Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 2
-Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 6
+@REM @REM @REM Alienbook Pre 2023-02-16
+@REM CALL C:\Users\pho\Anaconda2\Scripts\activate.bat C:\Users\pho\Anaconda2\envs\CyKit-AnacondaPython36
+@REM cd C:\Users\pho\bin\CyKit-master\Py3\
+@REM @REM Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 2
+@REM Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 6
 
 
 @REM Apogee 2023-02-16
@@ -46,12 +46,12 @@ Python.exe C:\Users\pho\bin\CyKit-master\Py3\CyKIT.py 127.0.0.1 5555 6
 @REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+eegmode+outputraw+nobattery+noheader+nocounter
 @REM noweb
 
-@REM 2025-04-17 - EmotivWindows (VirtualBox VM)
-CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
-cd "C:\Users\pho\repos\CyKit\Py3"
-@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
-@REM noweb+outputraw
+@REM @REM 2025-05-02 - EmotivWindows (VirtualBox VM)
+@REM CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
+@REM cd "C:\Users\pho\repos\CyKit\Py3"
+@REM @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
+@REM @REM noweb+outputraw
 
 @REM @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
 @REM micromamba activate cykit
@@ -62,3 +62,11 @@ python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
 @REM python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 
 @REM @REM noweb+outputraw
 @REM @REM C:\Users\pho\repos\EmotivEpoc\CyKit\Py3
+
+
+@REM 2025-05-02 - Apogee Fresh
+CALL C:\Users\pho\repos\EmotivEpoc\CyKit\.venv\Scripts\activate.bat
+cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
+
