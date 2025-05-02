@@ -50,7 +50,7 @@
 CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
 cd "C:\Users\pho\repos\CyKit\Py3"
 @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 
+python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
 @REM noweb+outputraw
 
 @REM @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
