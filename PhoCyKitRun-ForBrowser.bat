@@ -46,12 +46,12 @@
 @REM C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+eegmode+outputraw+nobattery+noheader+nocounter
 @REM noweb
 
-@REM @REM 2025-05-02 - EmotivWindows (VirtualBox VM)
-@REM CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
-@REM cd "C:\Users\pho\repos\CyKit\Py3"
-@REM @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
-@REM @REM noweb+outputraw
+@REM 2025-05-02 - EmotivWindows (VirtualBox VM)
+CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
+cd "C:\Users\pho\repos\CyKit\Py3"
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
+@REM noweb+outputraw
 
 @REM @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
 @REM micromamba activate cykit
@@ -64,9 +64,9 @@
 @REM @REM C:\Users\pho\repos\EmotivEpoc\CyKit\Py3
 
 
-@REM 2025-05-02 - Apogee Fresh
-CALL C:\Users\pho\repos\EmotivEpoc\CyKit\.venv\Scripts\activate.bat
-cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
-@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
+@REM @REM 2025-05-02 - Apogee Fresh
+@REM CALL C:\Users\pho\repos\EmotivEpoc\CyKit\.venv\Scripts\activate.bat
+@REM cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
+@REM @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
+@REM python C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
 
