@@ -771,6 +771,9 @@ document.getElementById('cyStartRecord').onclick = function(e) {
     document.getElementById('cyStopRecord').disabled = false;
     // Disable updating the filename while recording
     document.getElementById('cyUpdateRecordFilenameNow').disabled = true;
+    // Make text field readonly:
+    document.getElementById('cyRecordFile').readOnly = true;
+
 
     // Update the filename with current timestamp
     // document.getElementById('cyRecordFile').value = generateTimestampFilename();
@@ -787,10 +790,16 @@ document.getElementById('cyStopRecord').onclick = function(e) {
     document.getElementById('cyStopRecord').disabled = true;
     // Re-enable updating the filename while recording
     document.getElementById('cyUpdateRecordFilenameNow').disabled = false;
+    // Make text field readonly:
+    document.getElementById('cyRecordFile').readOnly = false;
 
     client.sendData("CyKITv2:::RecordStop");
     setTimeout(function() { refreshLog() }, 200);
     play_beep(1); // play_sound.js *
+
+    // Update the filename with current timestamp
+    document.getElementById('cyRecordFile').value = generateTimestampFilename();
+
 }
 
 
