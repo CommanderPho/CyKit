@@ -121,8 +121,7 @@ var baseline_check = document.getElementById("CyBaseline").checked;
 var eeg_resolution = (document.getElementById("myRange").value * .01);
 
 var modelTypes = ['None','Epoc-Research','Epoc','Insight (Research)','Insight','Epoc+ (Research)','Epoc+', 'EPOC+ (14-bit)', 'Epoc-Flex'];
-var headset = { 
-                0: 'epoc', 1: 'epoc', 2: 'epoc', 3: 'insight', 4: 'insight', 5: 'epoc_plus', 6: 'epoc_plus', 7:'epoc_plus', 8: 'epoc_flex'  }
+var headset = { 0: 'epoc', 1: 'epoc', 2: 'epoc', 3: 'insight', 4: 'insight', 5: 'epoc_plus', 6: 'epoc_plus', 7:'epoc_plus', 8: 'epoc_flex'  }
 
 var sensorNAME = {
                     epoc: ['AF3','F7','F3','FC5','T7','P7','O1','O2','P8','T8','FC6','F4','F8','AF4'],
