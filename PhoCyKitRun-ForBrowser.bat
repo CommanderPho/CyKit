@@ -45,3 +45,8 @@
 cd "C:\Users\pho\repos\EmotivEpoc\CyKit\Py3"
 C:\Users\pho\.pyenv\pyenv-win\versions\3.7.9\python.exe C:\Users\pho\repos\EmotivEpoc\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+eegmode+outputraw+nobattery+noheader+nocounter
 @REM noweb
+
+
+@REM 2025-04-10 - rMBP
+cd '/Users/pho/repo/CyKit/Py3'
+/Users/pho/repo/CyKit/myenv/bin/python CyKIT.py 127.0.0.1 5555 6 info+verbose +eegmode+outputraw+nobattery+noheader+nocounter
