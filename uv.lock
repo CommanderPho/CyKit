@@ -45,6 +45,7 @@ dependencies = [
     { name = "lazy-object-proxy" },
     { name = "pip" },
     { name = "pylint" },
+    { name = "pywinusb" },
     { name = "setuptools" },
     { name = "singledispatch" },
     { name = "six" },
@@ -61,6 +62,7 @@ requires-dist = [
     { name = "lazy-object-proxy", specifier = "==1.3.1" },
     { name = "pip", specifier = "==9.0.1" },
     { name = "pylint", specifier = "==1.7.2" },
+    { name = "pywinusb", specifier = ">=0.4.2" },
     { name = "setuptools", specifier = "==36.4.0" },
     { name = "singledispatch", specifier = "==3.4.0.3" },
     { name = "six", specifier = "==1.10.0" },
@@ -117,6 +119,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/0d/6b/31d4a60fad9f040da
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4f/9c/a73e0da981a39768cfaff54c0d46588a9284bd25146e24d479aa82c7c7ad/pylint-1.7.2-py2.py3-none-any.whl", hash = "sha256:c7a3ee11db42d00334671b778f042793c837b73f5883132158284b7dbd6f8184", size = 644105 },
 ]
+
+[[package]]
+name = "pywinusb"
+version = "0.4.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/38/b4/ecce4a3a0dac3b1bf5776943530cf4f36406fc9b3f4f3c31c8dcab2249eb/pywinusb-0.4.2.zip", hash = "sha256:e2f5e89f7b74239ca4843721a9bda0fc99014750630c189a176ec0e1b35e86df", size = 61747 }
 
 [[package]]
 name = "setuptools"
