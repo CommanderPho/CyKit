@@ -55,6 +55,14 @@ cd "C:\Users\pho\repos\CyKit\Py3"
 python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 outputdata
 
 
+@REM 2025-06-02 - Validating changed Epoc+ Mode (removed motion data): 
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 outputdata
+@REM 2025-06-02 5pm: Confirmed it ranges from 0-127 as mentioned in https://github.com/CymatiCorp/CyKit/wiki/How-to-Change-EPOC(plus)--modes#step-8
+
+
+
+
+
 @REM @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
 @REM micromamba activate cykit
 @REM @REM %windir%\system32\cmd.exe "/K" C:\Users\pho\micromamba\condabin\activate.bat C:\ProgramData\mambaforge-pypy3\
