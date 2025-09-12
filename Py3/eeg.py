@@ -41,13 +41,21 @@ arch = struct.calcsize("P") * 8
 
 #  Add a relative local path to CyKIT.
 # ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-localPath = ((sys.argv[0]).replace('/','\\')).split('\\')
-localPath = localPath[0:(len(localPath) -1)]
-localPath = str('\\'.join(localPath ))
-if localPath == None:
-    localPath = ".\\"
+# localPath = ((sys.argv[0]).replace('/','\\')).split('\\')
+# localPath = localPath[0:(len(localPath) -1)]
+# localPath = str('\\'.join(localPath ))
+# if localPath == None:
+#     localPath = ".\\"
 
+# sys.path.insert(0, localPath)
+
+
+from pathlib import Path
+import sys
+
+localPath = str(Path(sys.argv[0]).resolve().parent)
 sys.path.insert(0, localPath)
+
 
 class dbg():
     def txt(custom_string):
@@ -831,9 +839,9 @@ class EEG(object):
                        "integer","outputdata","generic","openvibe","baseline","outputraw",
                        "filter","allmode","eegmode","gyromode","verbose","noweb"]
 
-        if "allmode" in config:       self.datamode = 0
-        if "eegmode" in config:       self.datamode = 1
-        if "gyromode" in config:      self.datamode = 2       
+        if "allmode" in config:       self.datamode = 0  ## Gyro + EEG
+        if "eegmode" in config:       self.datamode = 1  ## EEG Only
+        if "gyromode" in config:      self.datamode = 2  ## Gyro Only
         
         if "nocounter" in config:     
             self.nocounter = True
@@ -991,7 +999,7 @@ class EEG(object):
                 global cb
                 
                 self.device = eegDLL.btle_init(DEVICE_UUID) # Open.
-                cb = _CB_FUNC_(DataCallback)                    # Set Handler.
+                cb = _CB_FUNC_(DataCallback) # Set Handler.
                 eegDLL.set_callback_func(cb)             
                 #mirror.text("> Searching for Bluetooth Device . . .")
                 useDevice = ""
