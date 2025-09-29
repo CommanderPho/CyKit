@@ -9,6 +9,20 @@
    ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
  */
 
+// Add this function to generate a timestamp-based filename
+function generateTimestampFilename() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    return `EEG-recording_${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
+}
+
+
 //  Socket Variables.
 // ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 var cyHost = document.getElementById('cyHost').value;
@@ -107,8 +121,7 @@ var baseline_check = document.getElementById("CyBaseline").checked;
 var eeg_resolution = (document.getElementById("myRange").value * .01);
 
 var modelTypes = ['None','Epoc-Research','Epoc','Insight (Research)','Insight','Epoc+ (Research)','Epoc+', 'EPOC+ (14-bit)', 'Epoc-Flex'];
-var headset = { 
-                0: 'epoc', 1: 'epoc', 2: 'epoc', 3: 'insight', 4: 'insight', 5: 'epoc_plus', 6: 'epoc_plus', 7:'epoc_plus', 8: 'epoc_flex'  }
+var headset = { 0: 'epoc', 1: 'epoc', 2: 'epoc', 3: 'insight', 4: 'insight', 5: 'epoc_plus', 6: 'epoc_plus', 7:'epoc_plus', 8: 'epoc_flex'  }
 
 var sensorNAME = {
                     epoc: ['AF3','F7','F3','FC5','T7','P7','O1','O2','P8','T8','FC6','F4','F8','AF4'],
@@ -601,6 +614,11 @@ function openTab(tabName) {
         return;
     }
         
+    // Update the filename when the Recording tab is opened
+    if (tabName == "Recording") {
+        document.getElementById('cyRecordFile').value = generateTimestampFilename();
+    }
+
     setTimeout(function() { resizeCanvas() }, 100);
 
 }
@@ -746,6 +764,18 @@ document.getElementById('gameStart').onclick = function(e) {
 //  Record Start Button.
 // ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 document.getElementById('cyStartRecord').onclick = function(e) {
+    // Disable the record button while recording
+    document.getElementById('cyStartRecord').disabled = true;
+    // Enable the stop button
+    document.getElementById('cyStopRecord').disabled = false;
+    // Disable updating the filename while recording
+    document.getElementById('cyUpdateRecordFilenameNow').disabled = true;
+    // Make text field readonly:
+    document.getElementById('cyRecordFile').readOnly = true;
+
+
+    // Update the filename with current timestamp
+    // document.getElementById('cyRecordFile').value = generateTimestampFilename();
     client.sendData("CyKITv2:::RecordStart:::" + document.getElementById('cyRecordFile').value); 
     play_beep(1); // play_sound.js *
 }
@@ -753,10 +783,33 @@ document.getElementById('cyStartRecord').onclick = function(e) {
 //  Record Stop Button.
 // ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 document.getElementById('cyStopRecord').onclick = function(e) {
+    // Re-enable the record button
+    document.getElementById('cyStartRecord').disabled = false;
+    // Optionally disable the stop button
+    document.getElementById('cyStopRecord').disabled = true;
+    // Re-enable updating the filename while recording
+    document.getElementById('cyUpdateRecordFilenameNow').disabled = false;
+    // Make text field readonly:
+    document.getElementById('cyRecordFile').readOnly = false;
+
     client.sendData("CyKITv2:::RecordStop");
     setTimeout(function() { refreshLog() }, 200);
     play_beep(1); // play_sound.js *
+
+    // Update the filename with current timestamp
+    document.getElementById('cyRecordFile').value = generateTimestampFilename();
+
 }
+
+
+//  Record Filename Timestamp Now Button.
+// ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+document.getElementById('cyUpdateRecordFilenameNow').onclick = function(e) {
+    // Update the filename with current timestamp
+    document.getElementById('cyRecordFile').value = generateTimestampFilename();
+}
+
+
 
 //  Connect Button.
 // ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
@@ -990,6 +1043,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         document.getElementById('CyMode').onclick();
         
+        // Set initial timestamp filename
+        document.getElementById('cyRecordFile').value = generateTimestampFilename();
+        // Initialize the stop button as disabled
+        document.getElementById('cyStopRecord').disabled = true;
+
+
         var check_sensor = document.getElementById("CySelect");
             check_sensor.addEventListener('change', function (event) {
                 play_beep(1); // play_sound.js *

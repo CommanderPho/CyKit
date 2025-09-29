@@ -23,7 +23,7 @@
          <div id = "connectBar"> 
             <div id="innerBar">
               <div id="hostPort">
-                Host <input id="cyHost" type="text" value="127.0.0.1" /> 
+                Host <input id="cyHost" type="text" value="WINEMOTIV.local" /> 
                 Port <input id="cyPort" type="text" maxlength="5" size="5" value="5555"/> 
                 <div id="connectButtons">
                  <input id="cyConnect" class="w3-bar-item w3-black  w3-hover-blue" type="button" value="Connect" />
@@ -238,16 +238,17 @@
                     <label style="color:#aaaaaa;">Filename</label> 
                     <input id="cyRecordFile" type="text" style="width:35%" value="EEG-recording_1" ></input> <br><br>
                     <input id="cyStartRecord" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Record"></input> &nbsp&nbsp
-                    <input id="cyStopRecord" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Stop" /></input>
+                    <input id="cyStopRecord" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Stop" /></input> &nbsp&nbsp
+                    <input id="cyUpdateRecordFilenameNow" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Now"></input>
                     <br><br><br><br>
                     </form>
                     <form id="playbackForm" action="">
                     <label><b>Playback </b> (not implemented)</label><hr id="boldLabel" style="width:50%; margin-top:1px;">
                     <label style="color:#aaaaaa;">Filename</label> 
-                    <input id="cyPlayFile" type="text" style="width:35%" value="EEG_recording_1" ></input> <br><br>
-                    <input id="cyPlaybackStart" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Play"></input> &nbsp&nbsp
-                    <input id="cyPlaybackPause" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Pause" /></input> &nbsp&nbsp
-                    <input id="cyPlaybackSTOP" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Stop" /></input>
+                    <input id="cyPlayFile" type="text" style="width:35%" value="EEG_recording_1" readonly></input> <br><br>
+                    <input id="cyPlaybackStart" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Play" disabled></input> &nbsp&nbsp
+                    <input id="cyPlaybackPause" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Pause" disabled/></input> &nbsp&nbsp
+                    <input id="cyPlaybackSTOP" class="w3-bar-item w3-black  w3-hover-gray" type="button" value="Stop" disabled/></input>
                     </form>
                     <div id="logWindow" style="position:absolute; right: 10px; top: 10px; width:45%; height:95%;"></div>
                 </div>

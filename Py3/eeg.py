@@ -41,13 +41,21 @@ arch = struct.calcsize("P") * 8
 
 #  Add a relative local path to CyKIT.
 # ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-localPath = ((sys.argv[0]).replace('/','\\')).split('\\')
-localPath = localPath[0:(len(localPath) -1)]
-localPath = str('\\'.join(localPath ))
-if localPath == None:
-    localPath = ".\\"
+# localPath = ((sys.argv[0]).replace('/','\\')).split('\\')
+# localPath = localPath[0:(len(localPath) -1)]
+# localPath = str('\\'.join(localPath ))
+# if localPath == None:
+#     localPath = ".\\"
 
+# sys.path.insert(0, localPath)
+
+
+from pathlib import Path
+import sys
+
+localPath = str(Path(sys.argv[0]).resolve().parent)
 sys.path.insert(0, localPath)
+
 
 class dbg():
     def txt(custom_string):
@@ -831,9 +839,9 @@ class EEG(object):
                        "integer","outputdata","generic","openvibe","baseline","outputraw",
                        "filter","allmode","eegmode","gyromode","verbose","noweb"]
 
-        if "allmode" in config:       self.datamode = 0
-        if "eegmode" in config:       self.datamode = 1
-        if "gyromode" in config:      self.datamode = 2       
+        if "allmode" in config:       self.datamode = 0  ## Gyro + EEG
+        if "eegmode" in config:       self.datamode = 1  ## EEG Only
+        if "gyromode" in config:      self.datamode = 2  ## Gyro Only
         
         if "nocounter" in config:     
             self.nocounter = True
@@ -991,7 +999,7 @@ class EEG(object):
                 global cb
                 
                 self.device = eegDLL.btle_init(DEVICE_UUID) # Open.
-                cb = _CB_FUNC_(DataCallback)                    # Set Handler.
+                cb = _CB_FUNC_(DataCallback) # Set Handler.
                 eegDLL.set_callback_func(cb)             
                 #mirror.text("> Searching for Bluetooth Device . . .")
                 useDevice = ""
@@ -1312,6 +1320,39 @@ class EEG(object):
             return str(int(float(edk_value)))
         return edk_value
          
+
+    # In the EEG class, add a method to extract quality values
+    def extractQualityValues(self, data):
+        # Quality values are typically in specific bytes of the data packet
+        # For EPOC/EPOC+, quality values are often in data[16] and data[17]
+        quality_values = {}
+        
+        # Different models store quality data differently
+        if self.KeyModel == 2 or self.KeyModel == 1:  # Epoc
+            # Extract quality values for each channel
+            # This is a simplified example - actual implementation depends on the device's data format
+            quality_values = {'AF3': data[16] & 0xF, 'F7': (data[16] >> 4) & 0xF, 
+                            'F3': data[17] & 0xF, 'FC5': (data[17] >> 4) & 0xF,
+                            'T7': data[18] & 0xF, 'P7': (data[18] >> 4) & 0xF,
+                            'O1': data[19] & 0xF, 'O2': (data[19] >> 4) & 0xF,
+                            'P8': data[20] & 0xF, 'T8': (data[20] >> 4) & 0xF,
+                            'FC6': data[21] & 0xF, 'F4': (data[21] >> 4) & 0xF,
+                            'F8': data[22] & 0xF, 'AF4': (data[22] >> 4) & 0xF}
+        elif self.KeyModel == 6 or self.KeyModel == 5:  # Epoc+
+            # Similar extraction for EPOC+
+            quality_values = {'AF3': data[16] & 0xF, 'F7': (data[16] >> 4) & 0xF, 
+                            'F3': data[17] & 0xF, 'FC5': (data[17] >> 4) & 0xF,
+                            'T7': data[18] & 0xF, 'P7': (data[18] >> 4) & 0xF,
+                            'O1': data[19] & 0xF, 'O2': (data[19] >> 4) & 0xF,
+                            'P8': data[20] & 0xF, 'T8': (data[20] >> 4) & 0xF,
+                            'FC6': data[21] & 0xF, 'F4': (data[21] >> 4) & 0xF,
+                            'F8': data[22] & 0xF, 'AF4': (data[22] >> 4) & 0xF}
+        else:
+            raise NotImplementedError(self.KeyModel)
+        
+        return quality_values
+
+
     #  eegThread. (Thread Start).
     # ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
     def run(self, key, cyIO):       

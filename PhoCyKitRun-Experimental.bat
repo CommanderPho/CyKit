@@ -49,8 +49,19 @@
 CALL C:\Users\pho\repos\CyKit\.venv\Scripts\activate.bat
 cd "C:\Users\pho\repos\CyKit\Py3"
 @REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6
-python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+openvibe+generic+nocounter+noheader+nobattery+integer+ovsamples:004
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 info+verbose+openvibe+generic+nocounter+noheader+nobattery+float+ovsamples:004  ## WORKING 2025-06-02
 @REM noweb+outputraw
+python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 outputdata
+
+
+@REM 2025-06-02 - Validating changed Epoc+ Mode (removed motion data): 
+@REM python C:\Users\pho\repos\CyKit\Py3\CyKIT.py 127.0.0.1 5555 6 outputdata
+@REM 2025-06-02 5pm: Confirmed it ranges from 0-127 as mentioned in https://github.com/CymatiCorp/CyKit/wiki/How-to-Change-EPOC(plus)--modes#step-8
+
+
+
+
 
 @REM @REM 2025-05-01 - Apogee with Miniconda - Python 3.6
 @REM micromamba activate cykit

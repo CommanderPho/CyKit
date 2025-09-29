@@ -191,7 +191,6 @@ def main(CyINIT):
         
         if (CyINIT % 10) == 0:
             
-
             check_threads = 0
             
             t_array = str(list(map(lambda x: x.name, threading.enumerate())))
