@@ -226,3 +226,299 @@ micromamba activate cykit
 
 pip freeze > requirements.txt
 
+
+
+
+
+```powershell
+& c:/Users/pho/repos/EmotivEpoc/CyKit/.venv/Scripts/Activate.ps1
+cd .\Py3\   
+# python .\CyKIT.py 127.0.0.1 5555 6 info+verbose+bluetooth+allmode+path
+
+
+python .\CyKIT.py 127.0.0.1 5555 6 info+verbose+bluetooth+allmode+path+outputdata+noweb
+
+
+
+```
+
+# Emotiv EEG Bluetooth Flutter App
+
+This Flutter application provides Bluetooth connectivity to Emotiv EEG devices (EPOC+, EPOC, Insight) for real-time EEG and MEMS/motion data streaming.
+
+## Features
+
+- **Bluetooth LE Connectivity**: Connects to Emotiv EEG devices via Bluetooth Low Energy
+- **Real-time Data Streaming**: Receives both EEG and MEMS/motion data streams
+- **Device Auto-detection**: Automatically finds and connects to compatible Emotiv devices
+- **Data Visualization**: Real-time display of received data packets
+- **Cross-platform**: Works on both Android and iOS (with appropriate permissions)
+
+## Files Overview
+
+### Core Files
+
+1. **`bluetooth_eeg_service.dart`** - Main service class that handles:
+   - Bluetooth device scanning and connection
+   - GATT service and characteristic discovery
+   - Data streaming setup
+   - Sending the `0x100` command to initiate data transmission
+
+2. **`eeg_data_widget.dart`** - Flutter widget that provides:
+   - User interface for device connection
+   - Real-time data display
+   - Connection status monitoring
+
+3. **`pubspec.yaml`** - Dependencies configuration
+
+## Key Conversion Points from Python
+
+### 1. Bluetooth Device Detection
+**Python (original):**
+```python
+getBTname = eegDLL.get_bluetooth_id()
+BTid = str(c_wchar_p(getBTname).value)
+if "EPOC" in BTid or "Insight" in BTid:
+    # Process device
+```
+
+**Dart (converted):**
+```dart
+String deviceName = result.device.platformName;
+if (deviceName.contains("EPOC") || deviceName.contains("Insight")) {
+    // Process device
+}
+```
+
+### 2. Device ID Parsing
+**Python (original):**
+```python
+BTid = BTid.replace("(","").replaceAll(")","")
+BT_key = BTid.split(" ")
+BTLE_device_name = BT_key[0]
+BT_key = BT_key[1]
+```
+
+**Dart (converted):**
+```dart
+String btId = deviceName;
+btId = btId.replaceAll("(", "").replaceAll(")", "");
+List<String> btKey = btId.split(" ");
+btleDeviceName = btKey[0];
+String btKeyValue = btKey[1];
+```
+
+### 3. Serial Number Creation
+**Python (original):**
+```python
+self.serial_number = bytes(("\x00" * 12),'utf-8') + bytearray.fromhex(str(BT_key[6:8] + BT_key[4:6] + BT_key[2:4] + BT_key[0:2]))
+```
+
+**Dart (converted):**
+```dart
+Uint8List zeros = Uint8List(12);
+String reversedKey = btKey.substring(6, 8) + 
+                    btKey.substring(4, 6) + 
+                    btKey.substring(2, 4) + 
+                    btKey.substring(0, 2);
+List<int> keyBytes = [];
+for (int i = 0; i < reversedKey.length; i += 2) {
+    keyBytes.add(int.parse(reversedKey.substring(i, i + 2), radix: 16));
+}
+Uint8List serialNumber = Uint8List.fromList([...zeros, ...keyBytes]);
+```
+
+### 4. BLE Command (0x100)
+**C++ (original):**
+```cpp
+newValue.Data[0] = 0x100;
+```
+
+**Dart (converted):**
+```dart
+Uint8List startCommand = Uint8List.fromList([0x00, 0x01, 0x00, 0x00]); // 0x100 in little-endian
+await characteristic.write(startCommand, withoutResponse: true);
+```
+
+## Setup Instructions
+
+### 1. Install Dependencies
+```bash
+flutter pub get
+```
+
+### 2. Platform Permissions
+
+#### Android (`android/app/src/main/AndroidManifest.xml`)
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+```
+
+#### iOS (`ios/Runner/Info.plist`)
+```xml
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>This app needs Bluetooth to connect to EEG devices</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>This app needs Bluetooth to connect to EEG devices</string>
+```
+
+### 3. Usage Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'eeg_data_widget.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Emotiv EEG App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: EEGDataWidget(),
+    );
+  }
+}
+```
+
+## Key Features
+
+### 1. UUIDs Used
+- **Device Service UUID**: `{81072f40-9f3d-11e3-a9dc-0002a5d5c51b}`
+- **EEG Data UUID**: `{81072f41-9f3d-11e3-a9dc-0002a5d5c51b}`
+- **MEMS Data UUID**: `{81072f42-9f3d-11e3-a9dc-0002a5d5c51b}`
+
+### 2. Data Streams
+- **EEG Data**: Real-time brain wave data from the headset
+- **MEMS Data**: Motion and accelerometer data from the headset
+
+### 3. Connection Process
+1. Scan for Bluetooth devices
+2. Filter for Emotiv devices (EPOC, Insight)
+3. Parse device ID and extract Bluetooth key
+4. Connect to device and discover GATT services
+5. Subscribe to EEG and MEMS characteristics
+6. Send `0x100` command to start data streaming
+7. Receive and process incoming data
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Bluetooth not supported**: Ensure device has Bluetooth LE capability
+2. **Permission denied**: Check platform-specific permissions
+3. **Device not found**: Ensure Emotiv device is paired and discoverable
+4. **Connection timeout**: Try reconnecting or check device battery
+
+### Debug Information
+
+The app provides detailed console output for debugging:
+- Device discovery process
+- Connection status
+- Data packet information
+- Error messages
+
+## Dependencies
+
+- `flutter_blue_plus`: Bluetooth LE functionality
+- `typed_data`: For byte array manipulation
+- `flutter`: Core Flutter framework
+
+## License
+
+This code is converted from the original CyKit Python implementation and maintains the same functionality for Emotiv EEG device connectivity.
+
+
+
+
+--------
+
+```
+cd .\Py3
+python .\CyKIT.py 127.0.0.1 5555 6 info+verbose+bluetooth+allmode+path+outputdata+noweb
+
+```
+
+
+```
+----
+# Packet 23209 from C:\Users\pho\AppData\Local\Temp\wireshark_nRF Sniffer for Bluetooth LE COM8LGSID3.pcapng
+- 23210
+- 191.850095
+- Intel_b7:b9:1a
+- c7:52:c2:63:6a:84
+- LE LL
+- 60
+- 
+- CONNECT_IND
+```
+
+
+btle.access_address == 0x8e89bed6
+
+btatt
+
+
+### 
+1. Why use the Access Address?
+
+Every BLE connection gets a unique 32-bit access address (different from the advertising address/MAC).
+
+All data channel packets (after CONNECT_IND) will carry that access address.
+
+Filtering on it isolates only that connection, even if other BLE devices are nearby.
+
+2. Where to find it in Wireshark
+
+Click on your CONNECT_IND packet.
+
+Expand the Link Layer (LE LL) section in the packet details pane.
+
+You’ll see a field like:
+
+Access Address: 0x8e89bed6
+
+
+(example value — yours will differ).
+
+3. Apply the filter
+
+Once you have that value, apply this display filter:
+
+btle.access_address == 0x8e89bed6
+
+
+(replace with your actual hex value).
+
+Now Wireshark will show only packets from the Epoc+ connection.
+
+4. Combine with higher-level filters
+
+If you want only specific traffic within that connection:
+
+Show ATT/GATT messages from that connection:
+
+btatt && btle.access_address == 0x8e89bed6
+
+
+Show only L2CAP data:
+
+btl2cap && btle.access_address == 0x8e89bed6
+
+
+### Main Address
+```
+btle.access_address == 0x8e89bed6
+```

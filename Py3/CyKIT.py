@@ -19,7 +19,16 @@ import threading
 import time
 import traceback
 import inspect
-    
+import signal
+import sys
+
+def signal_handler(sig, frame):
+    print('Exiting gracefully...')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
+
 arg_count = len(sys.argv)
 
 def mirror(custom_string):
